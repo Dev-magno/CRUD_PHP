@@ -1,0 +1,66 @@
+1. Crie um banco de dados chamado cinema.
+Este comando cria um banco de dados chamado cinema_db.
+create database cinema_db;
+
+
+2. Cria a tabela filmes.
+create table filmes_tb(
+filmes_id INT PRIMARY KEY AUTO_INCREMENT,
+titulo VARCHAR(200)NOT NULL,
+categoria VARCHAR(50)NOT NULL,
+duracao VARCHAR(5)NOT NULL,
+diretor VARCHAR(100)NOT NULL,
+sinopse TEXT NOT NULL,
+ano INT(4)
+);
+“create table filmes_tb”: cria uma tabela chamada filmes_tb dentro do banco cinema_db.
+
+“filme_id INT PRIMARY KEY AUTO_INCREMENT”: cria uma coluna chamada ‘filme_Id’ do tipo inteiro(INT). “PRIMARY KEY” a define como chave primária e “AUTO_INCREMENT” significa que a tabela será incrementada a cada cada valor adionado, isto é, é cada registo de forma automática.
+
+“titulo VARCHAR(255)NOT NULL”: cria uma coluna chamada ‘titulo’ do tipo string com comprimento máximo de 200 caracteres (VARCHAR(255)) e não pode ser nula (NOT NULL).
+
+“categoria VARCHAR(50)NOT NULL”: cria uma coluna chamada ‘categoria’ do tipo string com comprimento máximo de 50 caracteres (VARCHAR(50)) e não pode ser nula (NOT NULL).
+
+“duracao VARCHAR(5)NOT NULL”: cria uma coluna chamada ‘duracao’ do tipo string com comprimento máximo de 5 caracteres (VARCHAR(5)) e não pode ser nula (NOT NULL).
+
+“diretor VARCHAR(100)NOT NULL”: cria uma coluna chamada ‘diretor’ do tipo string com comprimento máximo de 100 caracteres (VARCHAR(100)) e não pode ser nula (NOT NULL).
+
+“sinopse TEXT NOT NULL”: cria uma coluna chamada ‘sinopse’ do tipo texto (‘TEXT’) e não pode ser nula (NOT NULL).
+
+“ano INT(4)”: cria uma coluna chamada ‘ano’ do tipo inteiro com 4 dígitos caracteres (INT(4)).
+
+
+3. Insira 5 registro; 
+INSERT filmes_tb (titulo, categoria, duracao, diretor, sinopse, ano) VALUES
+(“O Poderoso Chefão”, “Crime”, “1h 75m”, “Francis Ford Coppola”, “A saga da família Corleone, uma das mais influentes da máfia italiana nos EUA.”, 1972),
+(“O Senhor dos Anéis: A Sociedade do Anel”, “Fantasia”, “1h 78m”, “Peter Jackson”, “Um hobbit é encarregado de destruir um anel poderoso para salvar a Terra Média.”, 2001),
+(“Pulp Fiction”, “Crime”, “1h 54m”, “Quentin Tarantino”, “Histórias interligadas de crimes em Los Angeles.”, 1994),
+(“O Rei Leão”, “Animação”, “88m”, “Roger Allers, Rob Minkoff”, “A jornada de um leão jovem para se tornar o rei das savanas africanas.”, 1994),
+(“Matrix”, “Ficção Científica”, “1h 36m”, “Lana Wachowski, Lilly Wachowski”, “Um hacker descobre a verdade por trás de sua realidade simulada e luta contra seus controladores.”, 1999);
+
+“INSERT filmes_tb”: Insere os 5 registros na tabela filmes_tb.  
+
+
+
+5. Adicione na 3 ultimos filmes que você viu;
+INSERT filmes_tb (titulo, categoria, duracao, diretor, sinopse, ano) VALUES ("Jhon Wick", "ação", "1h 41m", "Derek Kolstad", "A história se concentra em John Wick, um assassino aposentado que busca vingança pelo roubo de seu carro e a morte de seu cachorro, um presente de sua esposa recentemente falecida", "2014");
+INSERT filmes_tb (titulo, categoria, duracao, diretor, sinopse, ano) VALUES ("Sisu", "ação", "1h 31m", "Jalmari Helander", "Quando um ex-soldado que descobre ouro no deserto da Lapônia tenta levar o saque para a cidade, soldados nazistas liderados por um brutal oficial da SS lutam contra ele.", "2022");
+INSERT filmes_tb (titulo, categoria, duracao, diretor, sinopse, ano) VALUES ("Rápida Vingança", "ação", "1h 38m", "George Tillman, Jr.", "Um assaltante de banco que acaba de sair da prisão quer vingar a morte de seu irmão e é perseguido por dois policiais incansáveis e um assassino de aluguel excêntrico.", "2010");
+
+“INSERT filmes_tb”: Insere os três registros na tablea filmes_tb.
+
+
+
+4. Mostre apenas os  campos titulo, duração e ano
+dos filmes cadastrados;
+
+“SELECT titulo, duracao, ano FROM filmes_tb”: busca apenas os campos titulo, duração e ano e os exibe na tela. 
+
+
+5. Mostre apenas os campos categoria,titulo e 
+sinopse dos filmes cadastrados;
+
+“SELECT categoria, titulo, sinopse FROM filmes_tb”: busca apenas os categoria, titulo e sinopse e os exibe na tela. 
+
+
+
