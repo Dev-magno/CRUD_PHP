@@ -1,5 +1,5 @@
 <?php
-// classe BancoDadosPDO - o PDO (PHP Data Objects) é mais robusta, ajuda evitar ataques de injeção SQL, é compatível com vários sistemas de gerencimaneto de banco de dados e facilita a integraçao com paradgas orientados a objetos do PHP.
+// classe BancoDadosPDO - o PDO (PHP Data Objects) é mais robusta, ajuda evitar ataques de injeção SQL, é compatível com vários sistemas de gerencimaneto de banco de dados e facilita a integraçao com paradgmas orientados a objetos do PHP.
 class BancoDadosPDO{
     private $conn; // atributo que armazena a instância da conexão
 

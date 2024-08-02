@@ -2,7 +2,7 @@
 // conexão com o banco de dados
 require_once 'processa_filmes.php';
 
-//instancia d classe BancoDadosPDO
+//instancia da classe BancoDadosPDO
 $bancoPDO = new BancoDadosPDO('localhost', 'root', '', 'cinema');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {// verifica se o método de requisição HTTP usado para acessar a página é POST

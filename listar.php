@@ -46,7 +46,7 @@ if($result && $result->rowCount() > 0){
             echo '<td>' . $linha['ano'] . '</td>';
             echo '<td class="actions">
                     <a id="editar" href="editar.php?id=' . $linha['filme_id'] . '">Editar</a>
-                    <a id="excluir" href="excluir.php?id=' . $linha['filme_id'] . '">Excluir</a>
+                    <a id="excluir" href="excluir.php?id=' . $linha['filme_id'] . '" onclik="confirmarExclusao()">Excluir</a>
                   </td>';
             echo '</tr>';
         }
