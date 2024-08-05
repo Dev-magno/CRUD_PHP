@@ -1,14 +1,8 @@
 <?php
-// conexão com o banco de dados
-require_once 'processa_filmes.php';
+require_once "user.php";
 
-//instancia d classe BancoDadosPDO
-$bancoPDO = new BancoDadosPDO('localhost', 'root', '', 'cinema');
+$result = User::listar();
 
-
-//consulta para buscar todos os filmes
-$sql = "SELECT * FROM filmes_tb"; // instrução SQL para consultar dados de uma tablea específica (filmes_tb)
-$result = $bancoPDO->executarConsulta($sql); // executa a consulta SQL no banco de dando e armazena o resultado na variável ($result)
 ?>
 
 <!DOCTYPE html>
@@ -21,45 +15,43 @@ $result = $bancoPDO->executarConsulta($sql); // executa a consulta SQL no banco 
 </head>
 <body>
     <main class="main-table">
-        <h2>Lista de Filmes</h2>
+        <h2>Lista de Usuários</h2>
         <?php
 //verifica se a consulta retornou resultados
 if($result && $result->rowCount() > 0){
     echo "<table>";
     echo "<tr>
-            <th>Título</th>
-            <th>Categoria</th>
-            <th>Duração</th>
-            <th>Diretor</th>
-            <th>Sinopse</th>
-            <th>Ano</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Data de Nascimento</th>
+            <th>Telefone</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Email</th>
             <th>Ação</th>
           </tr>";
 
           foreach ($result as $linha) {
             echo '<tr>';
-            echo '<td>' . $linha['titulo'] . '</td>';
-            echo '<td>' . $linha['categoria'] . '</td>';
-            echo '<td>' . $linha['duracao'] . '</td>';
-            echo '<td>' . $linha['diretor'] . '</td>';
-            echo '<td class="sinopse">' . $linha['sinopse'] . '</td>';
-            echo '<td>' . $linha['ano'] . '</td>';
+            echo '<td>' . $linha['nome'] . '</td>';
+            echo '<td>' . $linha['endereco'] . '</td>';
+            echo '<td>' . $linha['data_nascimento'] . '</td>';
+            echo '<td>' . $linha['telefone'] . '</td>';
+            echo '<td>' . $linha['cpf'] . '</td>';
+            echo '<td>' . $linha['rg'] . '</td>';
+            echo '<td>' . $linha['email'] . '</td>';
             echo '<td class="actions">
-                    <a id="editar" href="editar.php?id=' . $linha['filme_id'] . '">Editar</a>
-                    <a id="excluir" href="excluir.php?id=' . $linha['filme_id'] . '" onclik="confirmarExclusao()">Excluir</a>
+                    <a id="editar" href="editar.php?id=' . $linha['usuario_id'] . '">Editar</a>
+                    <a id="excluir" href="excluir.php?id=' . $linha['usuario_id'] . '">Deletar</a>
+                    <a id="voltar" href="index.php">Voltar</a>
                   </td>';
             echo '</tr>';
         }
         echo '</table>';
     } else {
         echo "Nenhum resultado encontrado.";
-    }
-    
-//fecha a conexão
-$bancoPDO->fecharConexao();
+    }   
 ?>
-<div class="voltar"><a id="Voltar" href="index.php?">Voltar</a></div>
-
     </main>
     
 </body>

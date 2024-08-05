@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -31,14 +31,18 @@ label {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: #B5C18E; /* Cor especificada para o botão adicionar */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -46,12 +50,13 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-textarea {
-    width: 60%; /* Ajusta a largura para 100% do contêiner */
-    height: 80px; /* Ajusta a altura conforme necessário */
-}
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #A0A97C; /* Cor mais escura para o botão adicionar ao passar o mouse */
+}
+
+textarea {
+    width: 100%; /* Ajusta a largura para 100% do contêiner */
+    height: 80px; /* Ajusta a altura conforme necessário */
 }
 
 .index {
@@ -70,22 +75,10 @@ input[type="submit"]:hover {
 
 .buttons {
     display: flex;
-    justify-content: center; 
-    
-    
+    justify-content: center;
 }
 
-#adicionar a {
-    margin-right: 30px;
-    text-decoration: none;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+#adicionar a,
 #listar a {
     text-decoration: none;
     background-color: #007bff;
@@ -94,6 +87,12 @@ input[type="submit"]:hover {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+#adicionar a:hover,
+#listar a:hover {
+    background-color: #0056b3;
 }
 
 .main-table {
@@ -107,11 +106,12 @@ input[type="submit"]:hover {
 .main-table h2 {
     margin-bottom: 20px;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
- 
 }
+
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
@@ -123,12 +123,9 @@ th {
     background-color: #f2f2f2;
     text-align: left;
 }
+
 tr:nth-child(even) {
     background-color: #f9f9f9;
-}
-
-.sinopse {
-    width: 380px; /* Largura específica para a coluna de sinopse */
 }
 
 .actions {
@@ -137,43 +134,49 @@ tr:nth-child(even) {
 
 .actions a {
     text-decoration: none;
-    
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #editar {
-    background-color: #007bff;
+    background-color: #C7B7A3; /* Cor especificada para o botão editar */
     margin-right: 10px;
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+}
+
+#editar:hover {
+    background-color: #B8A48E; /* Cor mais escura para o botão editar ao passar o mouse */
 }
 
 #excluir {
-    background-color: #FF0000;
+    background-color: #FF0000; /* Botão excluir permanece vermelho */
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+}
+
+#excluir:hover {
+    background-color: #CC0000; /* Cor mais escura para o botão excluir ao passar o mouse */
 }
 
 .voltar {
     display: flex;
-    float: right;
-    
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .voltar a {
     text-decoration: none;
     background-color: #19324e;
-    margin-right: 10px;
     color: white;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
-    margin-left: 1065px;
+}
+
+.voltar a:hover {
+    background-color: #102438; /* Cor mais escura para o botão voltar ao passar o mouse */
 }

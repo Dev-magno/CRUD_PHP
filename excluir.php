@@ -1,26 +1,15 @@
 <?php
-// Incluir o arquivo que contém a classe 'BancoDadosPDO' e outras configurações
-require_once 'processa_filmes.php';
+require_once "conexao.php"; //Conexão com  banco
+require_once "user.php"; //Chama a classe User
 
-// Cria uma nova instância do banco de dados
-$bancoPDO = new BancoDadosPDO('localhost', 'root', '', 'cinema');
-$id = $_GET['id'];
+$id = $_POST['id'];
 
+$user = new User($id); //Instancia um novo usuario e chamando o construtor
 
-    // Consulta para excluir o filme pelo ID
-    $sql = "DELETE FROM filmes_tb WHERE filme_id = :filme_id";
-    $stmt = $bancoPDO->prepare($sql);
-    $stmt->bindParam(':filme_id', $id, PDO::PARAM_INT);
-    $result = $stmt->execute(); // Executa a consulta
+$user->deletar();//Acessa o método deletar
 
-    // Verifica se a exclusão foi bem-sucedida
-    if ($result) {
-        // Redireciona para a página de listagem após a exclusão
-        header("Location: listar.php"); // Redireciona para a página de listagem
-        exit; // Encerra o script
-    } else {
-        echo "Falha ao excluir o filme.";
-    }
+header('location: index.php');
+exit();
 ?>
 
 

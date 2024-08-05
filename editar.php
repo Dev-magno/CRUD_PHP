@@ -1,24 +1,14 @@
 <?php
-// Incluir o arquivo que contém a classe 'BancoDadosPDO' e outras configurações
-require_once 'processa_filmes.php';
+//Conexão com o banco
+require_once "conexao.php";
 
-// instância da classe BancoDadosPDO para se conectar ao banco de dados
-$bancoPDO = new BancoDadosPDO('localhost', 'root', '', 'cinema');
+//Classe User
+require_once "user.php";
 
-$id = $_GET['id']; // recebe o ID do filme a ser editado a partir do parâmetro GET
+$id = $_GET['id']; // recebe o ID a ser editado a partir do parâmetro GET
 
-// Consulta para buscar os dados do filme pelo ID
-$sql = "SELECT * FROM filmes_tb WHERE filme_id = :filme_id";
-$stmt = $bancoPDO->prepare($sql);
-$stmt->bindParam(':filme_id', $id, PDO::PARAM_INT);
-$stmt->execute();
-$filme = $stmt->fetch(PDO::FETCH_ASSOC);
+$user = new User($id);
 
-// Verifica se o filme foi encontrado
-if (!$filme) {
-    echo "Filme não encontrado!";
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -26,45 +16,59 @@ if (!$filme) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Filme</title>
+    <title>Editar Usuário</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="main-cadastro">
-        <h2>Editar Filme</h2>
-        <form action="update.php" method="POST">
+        <h2>Editar Usuário</h2>
+        <form action="edit_controler.php" method="POST">
             <!-- Campo oculto para armazenar o ID do filme -->
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($filme['filme_id']); ?>">
-            <!-- Campo de entrada para o título do filme, preenchido com o valor atual -->
-             <!-- A utilização do PHP é para preencher o valor do campo id com o identificador (filme_id) do filme que está sendo editado e garante que o formulário envie o ID correto do filme quando for submetido para atualização. -->
+            <input type="hidden" name="usuario_id" value="<?= $user->getUsuarioId();?>">
+           
             <div>
-                <label for="titulo">Título</label>
-                <input type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($filme['titulo']); ?>" required>
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" value="<?= $user->getNome();?>" required>
             </div>
             <!-- Campo de entrada para a categoria do filme, preenchido com o valor atual -->
             <div>
-                <label for="categoria">Categoria</label>
-                <input type="text" name="categoria" id="categoria" value="<?php echo htmlspecialchars($filme['categoria']); ?>" required>
+                <label for="endereco">Endereço</label>
+                <input type="text" name="endereco" id="endereco" value="<?= $user->getEndereco();?>" required>
             </div>
             <!-- Campo de entrada para a duração do filme, preenchido com o valor atual -->
             <div>
-                <label for="duracao">Duração</label>
-                <input type="text" name="duracao" id="duracao" value="<?php echo htmlspecialchars($filme['duracao']); ?>" required>
+                <label for="data_nasmento">Data de Nascimento</label>
+                <input type="text" name="data_nascimento" id="data_nascimento" value="<?= $user->getDataNascimento();?>" required>
             </div>
             <!-- Campo de entrada para o diretor do filme, preenchido com o valor atual -->
             <div>
-                <label for="diretor">Diretor</label>
-                <input type="text" name="diretor" id="diretor" value="<?php echo htmlspecialchars($filme['diretor']); ?>" required>
+                <label for="telefone">Telefone</label>
+                <input type="text" name="telefone" id="telefone" value="<?= $user->getTelefone();?>" required>
             </div>
             <!-- Campo de entrada para a sinopse do filme, preenchido com o valor atual -->
             <div>
-                <label for="sinopse">Sinopse</label>
-                <textarea name="sinopse" id="sinopse" rows="4" required><?php echo htmlspecialchars($filme['sinopse']); ?></textarea>
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" required><?= $user->getCpf();?></input>
             </div>
             <!-- Campo de entrada para o ano do filme, preenchido com o valor atual -->
             <div>
-                <label for="ano">Ano</label>
-                <input type="number" name="ano" id="ano" value="<?php echo htmlspecialchars($filme['ano']); ?>" required>
+                <label for="rg">RG</label>
+                <input type="text" name="rg" id="rg" value="<?= $user->getRg();?>" required>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" value="<?= $user->getEmail();?>" required>
+            </div>
+
+            <div>
+                <label for="senha">Senha</label>
+                <input type="text" name="senha" id="senha" value="<?= $user->getSenha();?>" required>
+            </div>
+
+            <div>
+                <label for="senha">Confirmar Senha</label>
+                <input type="text" name="senha" id="senha" value="<?= $user->getSenha();?>" required>
             </div>
             <!-- Botão para submeter o formulário e salvar as alterações -->
             <input type="submit" value="Salvar">
